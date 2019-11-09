@@ -2,8 +2,11 @@
 
 ## Assignment Information
 Week 2 Programming Lab
+
 Michael Aboff
+
 Wilmington University
+
 Professor Brian Jorgage
 
 ## The Prompt
