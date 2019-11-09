@@ -1,13 +1,10 @@
 # Front-End Age Validator + Book Recommender
 
 ## Assignment Information
-Week 2 Programming Lab
-
-Michael Aboff
-
-Wilmington University
-
-Professor Brian Jorgage
+Week 2 Programming Lab  
+Michael Aboff  
+Wilmington University  
+Professor Brian Jorgage  
 
 ## The Prompt
 This week focused on learning about conditional statements: if/else and switches. 
