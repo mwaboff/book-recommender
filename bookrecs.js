@@ -14,7 +14,7 @@
 (function() {
   
   // Set the namespace to prevent any potential collisions.
-  var myRecommender = window.myRecommender = (window.myRecommender || {});
+  var Recommender = window.Recommender = (window.Recommender || {});
 
   // Initializing variables.
 

@@ -84,7 +84,7 @@ body {
 
     background: #444444;
     padding: 10px;
-    margin-bottom: 3px;
+    margin-bottom: 30px;
 
     color: #EFEFEF;
     font-size: 25px;
@@ -97,10 +97,6 @@ body {
     outline: none;
 }
 
-.input:not(:first-of-type) {
-    margin-top: 30px;
-}
-
 .input:focus {
     border-width: 1px 2px 2px 1px;
 }
@@ -109,11 +105,25 @@ body {
     background-color: #FF6600;
     color: #333333;
     margin-top: 30px;
+    user-select: none;
 }
 
 .submit:active {
     filter: brightness(90%);
     border-width: 2px 2px 2px 2px;
+}
+
+.submit:hover {
+    cursor: pointer;
+}
+
+
+
+
+/*Helper*/
+.hidden {
+    display: none;
+    opacity: 0;
 }
 
 

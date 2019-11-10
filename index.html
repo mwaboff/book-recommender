@@ -24,20 +24,33 @@
 <body>
 
     <div id="container">
-        <div class="content_container">
+        <div class="content_container" >
             
             <div class="login_form">
                 <div class="title_box">
                 <div class="title">Good day!</div>
             </div>
-                <form class="the_form">
+                <div class="the_form">
                     <input type="text" class="input" id="name_input" placeholder="Name">
                     </input>
-                    <input type="text" class="input" id="age_input" placeholder="Age (years)">
-                    </input>
+                    <!-- <input type="text" class="input" id="age_input" placeholder="Age (years)"></input> -->
+                    <select class="input" id="age_input" placeholder="Age (years)">
+                        <option value="0">Child</option>
+                        <option value="1">Young Adult</option>
+                        <option value="2">Adult</option>
+                    </select>
                     <div type="submit" class="input submit" id="submit_button">Recommend a book!</div>
-                </form>
+                </div>
             </div>
+        </div>
+        <div class="book_container hidden">
+            <div class="navbar">
+                <div class="welcome_text_container"></div>
+                <div class="age_selector_container">
+                    <select class="age_selector"></select>
+                </div>
+            </div>
+            <div class="book_recommendations"></div>
         </div>
         <span class="signature">// Written by Michael Aboff - mwaboff.com</span>
 
