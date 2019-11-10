@@ -127,7 +127,7 @@ body {
 }
 
 
-/*Book Content*/
+/*Book Page*/
 #outer_book_container {
 /*    border-style: solid;
     border-color: red;
@@ -160,6 +160,21 @@ body {
 .loading_gif {
     height: 50px;
     width: 90px;
+}
+
+#book_recommendations {
+    padding: 20px;
+}
+
+
+/*Book*/
+.book {
+    height: 200px;
+    width: 130px;
+    background: red;
+    filter: drop-shadow(5px 5px 5px #000000);
+    display: inline-block;
+    background-size: contain;
 }
 
 

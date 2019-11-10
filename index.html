@@ -17,6 +17,9 @@
 <head>
     <title>DSN6042 - Front End Recommender</title>
     <script type="text/javascript" src="bookrecs.js"></script>
+    <script type="text/javascript" src="book.js"></script>
+    <script type="text/javascript" src="library.js"></script>
+
     <link rel="stylesheet" href="bookrecs.css">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
 </head>
@@ -60,10 +63,15 @@
                     <!-- <select class="age_selector" id="age_selector"></select> -->
                 </div>
             </div>
-            <div id="book_recommendations ">
+            <div id="book_recommendations">
 
                 <img src="https://acegif.com/wp-content/uploads/loading-11.gif" 
                     class="loading_gif" />
+                <!-- <div class="book"></div> -->
+                <script>
+                    var testbook = new Book(1, "War and Peace", "A long book");
+                    document.getElementById("book_recommendations").append(testbook.getHtml());
+                </script>
             </div>
         </div>
         <span class="signature" id="signature">// Written by Michael Aboff - mwaboff.com</span>

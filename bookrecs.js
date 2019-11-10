@@ -38,7 +38,7 @@
   }
 
   /**
-  * Hides the login and replaces the GUI with the content page.
+  * Hides the login and replaces the GUI with the content page, or the other way.
   *
   * @param {int} page_int - 0 reveals the login page; 1 reveals the content page
   */
@@ -75,5 +75,4 @@
     welcome_container.innerText = welcome_text;
   }
 
-  
 })();
