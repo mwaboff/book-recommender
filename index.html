@@ -22,37 +22,51 @@
 </head>
 
 <body>
-
     <div id="container">
-        <div class="content_container" >
+        <div id="login_container">
             
             <div class="login_form">
                 <div class="title_box">
-                <div class="title">Good day!</div>
+                <div id="title">Good day!</div>
             </div>
                 <div class="the_form">
                     <input type="text" class="input" id="name_input" placeholder="Name">
                     </input>
-                    <!-- <input type="text" class="input" id="age_input" placeholder="Age (years)"></input> -->
-                    <select class="input" id="age_input" placeholder="Age (years)">
+                    <select class="age_selector input" id="login_age_input" placeholder="Age (years)">
                         <option value="0">Child</option>
                         <option value="1">Young Adult</option>
                         <option value="2">Adult</option>
                     </select>
                     <div type="submit" class="input submit" id="submit_button">Recommend a book!</div>
+
+                    <script>
+                        // I am experimenting here by dividing up the "front" from
+                        //   the "back" end of things. See how it feels to do.
+                        var submit_button = document.getElementById("submit_button");
+                        submit_button.addEventListener("click", function() {
+                            let age_group = document.getElementById("login_age_input").value;
+                            let name = document.getElementById("name_input").value;
+                            console.log(name);
+                            Recommender.loginButtonClick(name, age_group)
+                        });
+                    </script>
                 </div>
             </div>
         </div>
-        <div class="book_container hidden">
-            <div class="navbar">
-                <div class="welcome_text_container"></div>
-                <div class="age_selector_container">
-                    <select class="age_selector"></select>
+        <div class="hidden" id="outer_book_container">
+            <div id="navbar">
+                <div class="welcome_text_container" id="welcome_text_container">hi there what is up</div>
+                <div class="age_selector_container" id="age_selector_container">
+                    <!-- <select class="age_selector" id="age_selector"></select> -->
                 </div>
             </div>
-            <div class="book_recommendations"></div>
+            <div id="book_recommendations ">
+
+                <img src="https://acegif.com/wp-content/uploads/loading-11.gif" 
+                    class="loading_gif" />
+            </div>
         </div>
-        <span class="signature">// Written by Michael Aboff - mwaboff.com</span>
+        <span class="signature" id="signature">// Written by Michael Aboff - mwaboff.com</span>
 
     </div>
 
