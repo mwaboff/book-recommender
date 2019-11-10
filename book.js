@@ -11,11 +11,12 @@
 //////////////////////////////////////*/
 
 class Book {
-  constructor(id, title, description) {
+  constructor(id, title, author, description, image_link) {
     this.id = id;
     this.title = title;
+    this.author = author;
     this.description = description;
-    this.image_link = "url(https://images-na.ssl-images-amazon.com/images/I/51J1nb00FLL._SX330_BO1,204,203,200_.jpg)";
+    this.image_link = image_link;
   }
 
   getTitle() {
@@ -31,7 +32,6 @@ class Book {
     html_elem.setAttribute("class", "book");
     html_elem.setAttribute("id", "book_" + this.id);
     html_elem.setAttribute("style", "background-image: "+this.image_link);
-    // html_elem.innerText = this.title;
     return html_elem;
   }
 }
