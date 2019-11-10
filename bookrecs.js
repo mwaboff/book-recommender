@@ -17,6 +17,9 @@
   var Recommender = window.Recommender = (window.Recommender || {});
 
   // Initializing variables.
+  var initialize = Recommender.initialize = function() {
+    
+  }
 
 
 
