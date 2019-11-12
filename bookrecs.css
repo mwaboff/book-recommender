@@ -12,9 +12,6 @@
 
 * {
     box-sizing: border-box;
-    /*border-style: solid;
-    border-color: red;
-    border-width: 1px;*/
 }
 
 body {
@@ -47,20 +44,14 @@ body {
     display: flex;
     flex-direction: column;
     filter: drop-shadow(5px 5px 5px #000000);
-    /*border: solid;
-    border-color: red;*/
 }
 
 
 /*Login*/
 
 .title_box {
-    /*border: solid;
-    border-color: blue;*/
     height: 30%;
     display: flex;
-    /*flex-direction: column;*/
-
 }
 
 #title {
