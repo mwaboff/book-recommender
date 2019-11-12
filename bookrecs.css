@@ -76,8 +76,6 @@ body {
     width: 80%;
     align-self: center;
     margin: 0 auto;
-    /*border: solid;
-    border-color: green;*/
     display: flex;
     flex-direction: column;
 }
@@ -129,9 +127,6 @@ body {
 
 /*Book Page*/
 #outer_book_container {
-/*    border-style: solid;
-    border-color: red;
-*/  
     color: white;
     display: flex;
     flex-direction: column;
@@ -157,13 +152,23 @@ body {
     color: #CCCCCC;
 }
 
-.loading_gif {
+#book_age_selector {
+    width: 30%;
+}
+
+#loading_gif {
     height: 50px;
     width: 90px;
 }
 
 #book_recommendations {
     padding: 20px;
+    display: grid;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    justify-items: center;
 }
 
 
@@ -175,14 +180,21 @@ body {
     filter: drop-shadow(5px 5px 5px #000000);
     display: inline-block;
     background-size: contain;
+    margin: 5px;
+}
+
+.book:hover {
+    filter: brightness(90%);
+}
+
+.book:active {
+    filter: brightness(60%);
 }
 
 
 /*Helper*/
 .hidden {
     display: none !important;
-    /*max-height: 0px !important;
-    max-width: 0px !important;*/
 }
 
 

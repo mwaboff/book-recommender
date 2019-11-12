@@ -13,7 +13,6 @@
 class Library {
   constructor(age_range) {
     // Using if/else to meet criteria of the project prompt instead of switch.
-
     if (age_range == 0) {
       this.booklist = "picture-books.json"
     } else if (age_range == 1) {
@@ -24,9 +23,6 @@ class Library {
 
     this.api_key = "";
 
-    this.book_list = [];
-
-    this.requestBookList();
   }
 
   async requestBookList() {
@@ -36,44 +32,25 @@ class Library {
     let book_list = await fetch(request_url)
       .then(function(data){
         return data.json();
-        // this.addBook(data);
       })
       .catch(function(err){
         console.log("ERROR: " + err)
       });
 
-    this.processBookList(book_list["results"]["books"]);
-
-  }
-  
-  processBookList(books) {
-    console.log(this.books);
-    console.log(this.booklist);
-
-    for (var i = 0; i < books.length; i++) {
-      let id, title, author, image, description, new_book;
-      let book = books[i];
+    document.getElementById("loading_gif").classList.add("hidden");
+    for (var i = 0; i < book_list["results"]["books"].length; i++) {
+      console.log(book_list);
+      let id, title, author, image, description, book, new_book, url;
+      book = book_list["results"]["books"][i];
       id = book["primary_isbn13"];
       title = book["title"];
       author = book["author"];
       image = book["book_image"];
       description = book["description"];
+      url = book["amazon_product_url"];
 
-      new_book = new Book(id, title, author, description, image);
-      this.book_list.push(new_book);
+      new_book = new Book(id, title, author, description, image, url);
+      document.getElementById("book_recommendations").innerHTML += new_book.getHtml();
     }
-  }
-  
-
-  addBook(id, title, author, description, image) {
-    console.log(data);
-  }
-
-  generateBookList() {
-    this.library.push(new_book);
-  }
-
-  description() {
-    return this.description;
   }
 }

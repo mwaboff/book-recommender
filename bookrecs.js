@@ -16,7 +16,9 @@
   // Set the namespace to prevent any potential collisions.
   var Recommender = window.Recommender = (window.Recommender || {});
 
-  // Initializing variables.  
+  // Initializing variables.
+
+  var API_KEY = "";
 
 
   /**
@@ -33,8 +35,13 @@
   * @param {String} age_group - The value set by the user in the #login_age_input select.
   */ 
   var loginButtonClick = Recommender.loginButtonClick = function(name, age_group) {
+    var library, age_range;
+
     switchContent(1);
     setWelcomeText(name);
+
+    library = new Library(age_group);
+    library.requestBookList();
   }
 
   /**
@@ -51,8 +58,7 @@
       book_container.classList.add("hidden");
       login_container.classList.remove("hidden");
       signature.classList.remove("hidden");
-    }
-    else if (page_int === 1) {
+    } else if (page_int === 1) {
       login_container.classList.add("hidden");
       signature.classList.add("hidden");
       book_container.classList.remove("hidden");
@@ -68,9 +74,9 @@
     let welcome_container = document.getElementById("welcome_text_container");
     var welcome_text;
     if (name) {
-      welcome_text = "Welcome, " + name + "!";
+      welcome_text = "Happy Reading, " + name + "!";
     } else {
-      welcome_text = "Welcome!";
+      welcome_text = "Happy Reading!";
     }
     welcome_container.innerText = welcome_text;
   }
