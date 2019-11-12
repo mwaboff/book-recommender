@@ -13,71 +13,46 @@
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <title>DSN6042 - Front End Recommender</title>
+        <script type="text/javascript" src="bookrecs.js"></script>
+        <script type="text/javascript" src="book.js"></script>
+        <script type="text/javascript" src="library.js"></script>
 
-<head>
-    <title>DSN6042 - Front End Recommender</title>
-    <script type="text/javascript" src="bookrecs.js"></script>
-    <script type="text/javascript" src="book.js"></script>
-    <script type="text/javascript" src="library.js"></script>
+        <link rel="stylesheet" href="bookrecs.css">
+        <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
+    </head>
 
-    <link rel="stylesheet" href="bookrecs.css">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <div id="container">
-        <div id="login_container">
-            
-            <div class="login_form">
-                <div class="title_box">
-                <div id="title">Recommender</div>
-            </div>
-                <div class="the_form">
-                    <input type="text" class="input" id="name_input" placeholder="Name">
-                    </input>
-                    <select class="age_selector input" id="login_age_input" placeholder="Age (years)">
+    <body>
+        <div id="container">
+            <div id="book_container">
+                <div id="navbar">
+                    <div id="welcome_text_container">Happy Reading!</div>
+                    <select class="age_selector input" id="book_age_selector" placeholder="Age (years)">
                         <option value="0">Child</option>
                         <option value="1">Young Adult</option>
                         <option value="2">Adult</option>
                     </select>
-                    <div type="submit" class="input submit" id="submit_button">Recommend a book!</div>
-
-                    <script>
-                        var submit_button = document.getElementById("submit_button");
-                        submit_button.addEventListener("click", function() {
-                            let age_group = document.getElementById("login_age_input").value;
-                            let name = document.getElementById("name_input").value;
-                            console.log(name);
-                            Recommender.loginButtonClick(name, age_group)
-                        });
-                    </script>
                 </div>
+                <div id="book_recommendations"></div>
             </div>
+            <span class="signature" id="signature">// Written by Michael Aboff - mwaboff.com</span>
         </div>
-        <div class="hidden" id="outer_book_container">
-            <div id="navbar">
-                <div id="welcome_text_container"></div>
-                <!-- <select class="age_selector input" id="book_age_selector" placeholder="Age (years)">
-                    <option value="0">Child</option>
-                    <option value="1">Young Adult</option>
-                    <option value="2">Adult</option>
-                </select> -->
-            </div>
-            <div id="book_recommendations">
-                <img src="https://acegif.com/wp-content/uploads/loading-11.gif" id="loading_gif" />
-            </div>
-        </div>
-        <span class="signature" id="signature">// Written by Michael Aboff - mwaboff.com</span>
 
-    </div>
+        <script>
+            (function() {
+                // Keeping front-end code in the HTML, for sake of separation of work.
+                var age_select, library;
 
-    <script>
-        (function() {
-            Recommender.initialize();
-            
-        })();
-    </script>
+                library = Recommender.generateLibrary();
+                library.generateBookList();
 
-</body>
-
+                age_select = document.getElementById("book_age_selector");
+                age_select.addEventListener("change", function(event) {
+                    library.setAge(event["target"].value);
+                    library.generateBookList();
+                });            
+            })();
+        </script>
+    </body>
 </html>

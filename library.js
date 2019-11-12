@@ -11,7 +11,18 @@
 //////////////////////////////////////*/
 
 class Library {
-  constructor(age_range) {
+  constructor(age_range, api_key) {
+    this.setAge(age_range);
+    this.api_key = api_key;
+
+  }
+
+  /**
+  * Updates the booklist string to match the age_range provided by the user.
+  *
+  * @param {int} age_range - The int provided by drop down on UI.
+  */
+  setAge(age_range) {
     // Using if/else to meet criteria of the project prompt instead of switch.
     if (age_range == 0) {
       this.booklist = "picture-books.json"
@@ -20,16 +31,21 @@ class Library {
     } else {
       this.booklist = "trade-fiction-paperback.json";
     }
-
-    this.api_key = "";
-
   }
 
-  async requestBookList() {
-    let request_url = "https://api.nytimes.com/svc/books/v3/lists/current/" + this.booklist;
+  /**
+  * Sends an asynchronous fetch request to the NY Times Best Sellers API.
+  *   Parses and generates Book objects. Inserts Book HTML into page.
+  */
+  async generateBookList() {
+    let request_url, data, book_list;
+
+    request_url = "https://api.nytimes.com/svc/books/v3/lists/current/" + this.booklist;
     request_url += "?api-key="+this.api_key;
-    
-    let book_list = await fetch(request_url)
+
+    Recommender.loadingBookRec();
+
+    data = await fetch(request_url)
       .then(function(data){
         return data.json();
       })
@@ -37,19 +53,19 @@ class Library {
         console.log("ERROR: " + err)
       });
 
-    document.getElementById("loading_gif").classList.add("hidden");
-    for (var i = 0; i < book_list["results"]["books"].length; i++) {
-      console.log(book_list);
-      let id, title, author, image, description, book, new_book, url;
-      book = book_list["results"]["books"][i];
+    book_list = data["results"]["books"];
+
+    Recommender.clearBookRec();
+
+    for (var i = 0; i < book_list.length; i++) {
+      let id, image, book, new_book, url;
+
+      book = book_list[i];
       id = book["primary_isbn13"];
-      title = book["title"];
-      author = book["author"];
       image = book["book_image"];
-      description = book["description"];
       url = book["amazon_product_url"];
 
-      new_book = new Book(id, title, author, description, image, url);
+      new_book = new Book(id, image, url);
       document.getElementById("book_recommendations").innerHTML += new_book.getHtml();
     }
   }

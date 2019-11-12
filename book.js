@@ -11,23 +11,24 @@
 //////////////////////////////////////*/
 
 class Book {
-  constructor(id, title, author, description, image_link, amazon_url) {
+
+  /**
+  * Constructs a Book instance by setting instance variables.
+  *
+  * @param {String} id - The book ID provided from API call.
+  * @param {int} image_link - Book cover image provided from API call.
+  * @param {int} amazon_url - The URL to purchase provided from API call.
+  */
+  constructor(id, image_link, amazon_url) {
     this.id = id;
-    this.title = title;
-    this.author = author;
-    this.description = description;
     this.image_link = image_link;
     this.amazon_url = amazon_url;
   }
 
-  getTitle() {
-    return this.title;
-  }
-
-  getDescription() {
-    return this.description;
-  }
-
+  /**
+  * Sends an asynchronous fetch request to the NY Times Best Sellers API.
+  *   Parses and generates Book objects. Inserts Book HTML into page.
+  */
   getHtml() {
     let html_string = "<a href=\"" + this.amazon_url + "\" target=\"_blank\">";
     html_string += "<div class=\"book\" id=\"book_" + this.id + "\" ";
